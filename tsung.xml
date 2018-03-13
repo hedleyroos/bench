@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE tsung SYSTEM "/usr/share/tsung/tsung-1.0.dtd" []>
+<tsung loglevel="warning">
+
+  <clients>
+    <client host="localhost" maxusers="5000" use_controller_vm="true" />
+  </clients>
+
+  <servers>
+    <server host="172.30.45.146" port="9011" type="tcp"/>
+    <!--<server host="172.30.45.146" port="9012" type="tcp"/>-->
+    <!--<server host="172.30.45.146" port="9013" type="tcp"/>-->
+    <!--<server host="172.30.45.146" port="9014" type="tcp"/>-->
+  </servers>
+
+  <load>
+    <arrivalphase phase="1" duration="300" unit="second">
+      <users arrivalrate="250" unit="second"/>
+    </arrivalphase>
+  </load>
+
+  <sessions>
+    <session name="es_load" weight="1" type="ts_http">
+      <request>
+      <http url="/"
+              method="GET"
+       />
+      </request>
+    </session>
+ </sessions>
+</tsung>
